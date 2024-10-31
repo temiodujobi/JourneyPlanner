@@ -10,4 +10,4 @@ The solution is dependent on a few freely available open-source packages which c
 ## Required Tools
 
 - [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+- [Visual Studio 2020](https://visualstudio.microsoft.com/vs/)
