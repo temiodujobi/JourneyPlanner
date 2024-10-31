@@ -20,6 +20,7 @@ namespace UIAutomationTests.Pages
         private IWebElement JourneyDetails => Context.Driver.FindElement(By.CssSelector("#option-1-content .journey-details"));
         private IWebElement LeastWalkingJourneyTime => Context.Driver.FindElement(By.CssSelector("#option-1-heading .journey-time.no-map"));
         private IWebElement JourneyResultSummaryFrom => Context.Driver.FindElement(By.ClassName("journey-result-summary"));
+        private IWebElement JourneyModal => Context.Driver.FindElement(By.CssSelector(".extra-journey-options.multi-modals.clearfix"));
         private IWebElement ViewDetails => Context.Driver.FindElement(By.CssSelector("#option-1-content button.secondary-button.show-detailed-results.view-hide-details"));
 
         public bool AccessInfoType(string accessInfo) => Context.Driver.FindElement(By.CssSelector($"#option-1-content a.{accessInfo.ToLower().Trim().Replace(" ", "-")}.tooltip-container")).Displayed;
@@ -37,9 +38,8 @@ namespace UIAutomationTests.Pages
 
         public string JourneyTypeTime(string journeyType)
         {
-            var journeyTime = Context.Driver.FindElement(By.CssSelector($"a.journey-box.{journeyType} .col2.journey-info"));
-            
-            WebDriverWait.Until(d => PageInReadyState && journeyTime.Displayed);
+            WebDriverWait.Until(d => PageInReadyState && JourneyModal.Displayed);
+            var journeyTime = Context.Driver.FindElement(By.CssSelector($"a.journey-box.{journeyType} .col2.journey-info"));          
             return journeyTime.Text;
         }
 

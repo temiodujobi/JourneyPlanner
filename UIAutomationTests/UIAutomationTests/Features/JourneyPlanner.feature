@@ -87,3 +87,21 @@ Scenario: 10. Save new journey preferences
 	And user updates journey with routes with fewer changes
 	And user saves preferences for future visits
 	Then preferences should be saved for future journey searches
+
+@ignore
+Scenario: 11. Simulate multiple users to plan same journey
+	Given multiple users are on the TFL home page
+	When users plan a journey from 'Leicester Square' to 'Covent Garden'
+	Then users should be presented with the Journey Results
+
+@ignore
+Scenario: 12. Verify response time for result set
+	Given user is on the TfL home page
+	And user plans a journey from 'Leicester Square' to 'Covent Garden'
+	And user is presented with the Journey Results at the expected response time
+
+@ignore
+Scenario: 13. Verify the input fields won't search against sql injection
+	Given user is on the TfL home page
+	And user tries to inject sql queries into the input fields
+	And user should be presented with error message
